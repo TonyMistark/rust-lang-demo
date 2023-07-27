@@ -77,3 +77,13 @@ fn main() {
     let result = ba1.transfer(&mut ba2, 50);
     println!("ba1 再转 50 给 ba2 返回状态：{result}");
 }
+
+/*
+   before deposit: BankAcount(1, 0)
+   after deposit 100: BankAcount(1, 100)
+   ba1 取出 50, 100 -> 50
+   ba1 transfer amount 50 to 2 success
+   ba1 转 50 给 ba2 返回状态：true
+   ba1 transfer amount 50 to 2 failed, balance is not enough
+   ba1 再转 50 给 ba2 返回状态：false
+*/
