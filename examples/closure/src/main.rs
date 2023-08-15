@@ -66,6 +66,14 @@ where
     }
 }
 
+#[derive(Debug)]
+struct MyString {
+    content: String
+}
+
+impl MyString {
+}
+
 fn main() {
     let mut c = Cacher::new(|x| x + 1);
     println!("value: {}", c.value(2));
@@ -76,6 +84,7 @@ fn main() {
     println!("value: {}", ac.value(3));
 
     let mut ac2 = AdvanceCacher::new(|a| a);
-    println!("{}", ac2.value("ice"))
+    println!("value: {}", ac2.value("ice"));
+    println!("value: {}", ac2.value("ice"));
 
 }
