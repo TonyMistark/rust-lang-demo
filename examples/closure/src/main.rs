@@ -242,6 +242,20 @@ fn exec_001<'a, F: FnOnce(&'a str) -> String>(mut f: F) {
     println!("result_s: {result_s}");
 }
 
+// 闭包作为函数返回值
+// 看到这里，相信大家对于如何使用闭包作为函数参数，已经很熟悉了，
+// 但是如果要使用闭包作为函数返回值，该如何做？
+
+fn factory(x: i32) -> Box<dyn Fn(i32) -> i32> {
+    let num = 5;
+
+    if x > 1 {
+        Box::new(move |x| x + num)
+    } else {
+        Box::new(move |x| x - num)
+    }
+}
+
 fn main() {
     let mut c = Cacher::new(|x| x + 1);
     println!("value: {}", c.value(2));
@@ -275,5 +289,4 @@ fn main() {
 
     three_fn_relationships();
     three_fn_relationships001();
-
 }
